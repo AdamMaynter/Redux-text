@@ -1,26 +1,41 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { createStore } from "redux";
+import { connect, Provider } from 'react-redux'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+const initialState = {
+    firstName: '',
+    secondName: ''
+}
+
+const ACTION_CHANGE_FIRST_NAME = 'ACTION_CHANGE_FIRST_NAME';
+const ACTION_CHANGE_SECOND_NAME = 'ACTION_CHANGE_SECOND_NAME';
+
+const actionChangeFirstName = {
+    type: ACTION_CHANGE_FIRST_NAME,
+    payload: null
+};
+
+const actionChangeSecondName = {
+    type: ACTION_CHANGE_SECOND_NAME,
+    payload: null
+}
+
+const rootReducer = (state = initialState, action) => {
+    return state;
+};
+
+const store = createStore(rootReducer);
+
+console.log(store.getState())
+
+class App  extends React.Component {
+    render() {
+        return <div>
+            <div><input type="text" placeholder="First Name"/></div>
+            <div><input type="text" placeholder="Second Name"/></div>
+            <div/>
+        </div>
+    }
 }
 
 export default App;
